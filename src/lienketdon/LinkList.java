@@ -49,6 +49,7 @@ public class LinkList {
 				String hoTen = scanner.nextLine();
 				System.out.println("nhap diem: ");
 				float diem = scanner.nextFloat();
+				scanner.nextLine();
 				insert(maSV, hoTen, diem);
 			}
 
@@ -87,4 +88,38 @@ public class LinkList {
 		return ln;
 
 	}
+	 public Link search(String maSV)
+	    {
+	    	Link p=first;
+	    	while ((p!= null)&&(p.getMaSV().equals(maSV)!=true))
+	    	{
+	    		p=p.nextLink;
+	    	}
+	    	return(p);
+	    }
+	  public void search1(String hoTen) {
+	        Link p = first;
+	        while (p != null) {
+	            if (p.getHoTen().equals(hoTen)) {
+	                System.out.println(p.getMaSV() + ";" + p.getHoTen());
+	            }
+	            p = p.nextLink;
+	        }
+	    }
+	   public void delete(String maSV)
+	    {
+	    	Link p= search(maSV);
+	    	if(p!=null)
+	    	{
+	    		if (p== first) {first=first.nextLink;}
+	    		else
+	    		{
+	    			Link v,u=first;
+	    			while ((u.nextLink!=p)&&(u!=null)) u=u.nextLink;
+	    			v=p.nextLink;
+	    			u.nextLink=v;
+	    		}
+	    	}
+	    }
+
 }
